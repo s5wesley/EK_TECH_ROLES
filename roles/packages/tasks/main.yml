@@ -1,0 +1,38 @@
+---
+- name: Install packages
+  apt:
+    name:
+      - curl
+      - git
+      - gnupg
+      - jq
+      - openssh-client
+      - python3
+      - nodejs
+      - npm
+      - vim
+      - wget
+      - python3-pip
+      - net-tools
+      - iputils-ping
+  become: yes
+
+- name: Install AWS CLI
+  pip:
+    name: awscli
+    state: latest
+  become: yes
+
+- name: Install Java, Maven, and Git
+  apt:
+    name:
+      - openjdk-11-jdk
+      - maven
+      - git
+  become: yes
+
+- name: Install Go
+  apt:
+    name:
+      - golang-go
+  become: yes

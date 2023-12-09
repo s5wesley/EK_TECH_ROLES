@@ -1,0 +1,11 @@
+---
+- name: playbook
+  hosts: all
+  become: yes
+  roles:
+    #- patch
+    #- users
+    #- nginx
+    #- packages
+    #- docker-compose
+    - docker
