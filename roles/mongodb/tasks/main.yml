@@ -1,0 +1,12 @@
+# tasks/main.yml
+
+---
+- name: Start MongoDB Container
+  become: true
+  docker_container:
+    name: "{{ mongodb_container_name }}"
+    image: "{{ mongodb_docker_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ mongodb_port }}:27017"

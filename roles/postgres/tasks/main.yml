@@ -1,0 +1,19 @@
+# tasks/main.yml
+
+---
+
+- name: Start PostgreSQL Container
+  become: true
+  docker_container:
+    name: "{{ postgresql_container_name }}"
+    image: "{{ postgresql_docker_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ postgresql_port }}:5432"
+    env:
+      POSTGRES_USER: "{{ postgresql_user }}"
+      POSTGRES_PASSWORD: "{{ postgresql_password }}"
+      POSTGRES_DB: "{{ postgresql_database }}"
+    volumes:
+      - /path/to/postgresql/data:/var/lib/postgresql/data

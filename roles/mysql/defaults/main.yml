@@ -1,0 +1,9 @@
+# defaults/main.yml
+
+mysql_root_password: "your_root_password"
+mysql_database_name: "your_database_name"
+mysql_user: "admin"
+mysql_password: "admin"
+mysql_docker_image: "mysql:latest"
+mysql_container_name: "mysql_container"
+mysql_port: "3306"

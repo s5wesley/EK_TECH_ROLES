@@ -1,0 +1,21 @@
+# tasks/main.yml
+
+---
+
+- name: Start MySQL Container
+  become: true
+  docker_container:
+    name: "{{ mysql_container_name }}"
+    image: "{{ mysql_docker_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ mysql_port }}:3306"
+    env:
+      MYSQL_ROOT_PASSWORD: "{{ mysql_root_password }}"
+      MYSQL_DATABASE: "{{ mysql_database_name }}"
+      MYSQL_USER: "{{ mysql_user }}"
+      MYSQL_PASSWORD: "{{ mysql_password }}"
+    volumes:
+      - /path/to/mysql/data:/var/lib/mysql
+  register: mysql_container_result

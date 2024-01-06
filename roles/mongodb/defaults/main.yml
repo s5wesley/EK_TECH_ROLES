@@ -1,0 +1,5 @@
+# defaults/main.yml
+
+mongodb_docker_image: "mongo:latest"
+mongodb_container_name: "mongo_container"
+mongodb_port: "27017"

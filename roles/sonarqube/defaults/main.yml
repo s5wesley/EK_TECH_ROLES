@@ -1,0 +1,16 @@
+# defaults/main.yml
+
+sonarqube_docker_image: "sonarqube:latest"
+sonarqube_container_name: "sonarqube_container"
+sonarqube_port: "9000"
+sonarqube_db_url: "jdbc:postgresql://sonarqube-db:5432/sonar"
+sonarqube_db_username: "sonar"
+sonarqube_db_password: "sonar"
+
+postgresql_docker_image: "postgres:latest"
+postgresql_container_name: "sonarqube-db"
+postgresql_port: "5432"
+
+nginx_docker_image: "nginx:latest"
+nginx_container_name: "sonarqube-nginx"
+nginx_port: "80"

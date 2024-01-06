@@ -1,0 +1,8 @@
+# defaults/main.yml
+
+postgresql_user: "admin"
+postgresql_password: "admin"
+postgresql_database: "pg"
+postgresql_docker_image: "postgres:latest"
+postgresql_container_name: "pg_container"
+postgresql_port: "5432"

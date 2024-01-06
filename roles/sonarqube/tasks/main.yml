@@ -1,0 +1,44 @@
+# tasks/main.yml
+
+---
+- name: Start PostgreSQL Container
+  become: true
+  docker_container:
+    name: "{{ postgresql_container_name }}"
+    image: "{{ postgresql_docker_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ postgresql_port }}:5432"
+    env:
+      POSTGRES_DB: sonar
+      POSTGRES_USER: "{{ sonarqube_db_username }}"
+      POSTGRES_PASSWORD: "{{ sonarqube_db_password }}"
+
+
+- name: Start SonarQube Container
+  become: true
+  docker_container:
+    name: "{{ sonarqube_container_name }}"
+    image: "{{ sonarqube_docker_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ sonarqube_port }}:9000"
+    env:
+      SONARQUBE_JDBC_URL: "{{ sonarqube_db_url }}"
+      SONARQUBE_JDBC_USERNAME: "{{ sonarqube_db_username }}"
+      SONARQUBE_JDBC_PASSWORD: "{{ sonarqube_db_password }}"
+
+
+
+- name: Start Nginx Container
+  become: true
+  docker_container:
+    name: "{{ nginx_container_name }}"
+    image: "{{ nginx_docker_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ nginx_port }}:80"
+    
