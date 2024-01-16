@@ -13,6 +13,6 @@
     #- mysql
     #- postgres
     #- mongodb
-    - jenkins
+    #- jenkins
 
    
